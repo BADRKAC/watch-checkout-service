@@ -25,18 +25,24 @@ public class OrderServiceTest {
 
   @Mock
   private Parameters parameters;
-  private List<String> watches1;
-  private List<String> watches2;
-  private List<String> watches3;
-  private List<String> watches4;
+  private List<String> watchesOrder1;
+  private List<String> watchesOrder2;
+  private List<String> watchesOrder3;
+  private List<String> watchesOrder4;
+  private List<String> watchesOrder5;
+  private List<String> watchesOrder6;
 
   @Before
   public void setUp() {
     orderService = new OrderService(parameters);
-     watches1 = Arrays.asList("001", "001", "001", "001", "001","001","001");
-     watches2 = new ArrayList<>();
-     watches3 = Arrays.asList("UUU", "WWW", "001", "", "003");
-     watches4 = Arrays.asList("001", "002", "001", "004", "008");
+
+    watchesOrder1 = Arrays.asList("001", "001", "001", "001", "001","001","001");
+    watchesOrder2 = new ArrayList<>();
+    watchesOrder3 = Arrays.asList("UUU", "WWW", "001", "", "003");
+    watchesOrder4 = Arrays.asList("001", "002", "001", "004", "008");
+    watchesOrder5 = Arrays.asList("002", "002", "002", "002", "002","002","002");
+    watchesOrder6 = Arrays.asList("001", "002", "001", "004", "003");
+
   }
 
   @Test
@@ -55,16 +61,21 @@ public class OrderServiceTest {
     when(parameters.getSwatchID()).thenReturn("003");
     when(parameters.getCasioID()).thenReturn("004");
 
-    Double total = orderService.makeOrder(watches1);
-    assertThat(total).isNotNull().isEqualTo(Double.valueOf(500));
+    Double total1 = orderService.makeOrder(watchesOrder1);
+    assertThat(total1).isNotNull().isEqualTo(Double.valueOf(500));
 
+    Double total2 = orderService.makeOrder(watchesOrder5);
+    assertThat(total2).isNotNull().isEqualTo(Double.valueOf(440));
+
+    Double total3 = orderService.makeOrder(watchesOrder6);
+    assertThat(total3).isNotNull().isEqualTo(Double.valueOf(360));
   }
   @Test
   public void whenOrderIsNotValid() throws CreateOrderHandler {
 
-    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watches2));
-    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watches3));
-    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watches4));
+    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watchesOrder2));
+    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watchesOrder3));
+    assertThrows(CreateOrderHandler.class, () -> orderService.makeOrder(watchesOrder4));
 
   }
 

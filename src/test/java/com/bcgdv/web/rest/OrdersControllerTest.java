@@ -34,13 +34,18 @@ public class OrdersControllerTest {
   @Test
   public void whenPostOrder_thenCheckout() throws Exception {
 
-     List<String> watchesOrder = Arrays.asList("001", "002", "001", "004", "003");
-     Double price = 360.0;
-     given(orderService.makeOrder(watchesOrder)).willReturn(price);
+     List<String> watchesOrder1 = Arrays.asList("001", "002", "001", "004", "003");
+     List<String> watchesOrder2 = Arrays.asList("001", "XXX");
 
-    mockMvc.perform(post("/checkout")
+    Double price = 360.0;
+
+     given(orderService.makeOrder(watchesOrder1)).willReturn(price);
+     given(orderService.makeOrder(watchesOrder2))
+                       .willThrow(new CreateOrderHandler("This is not a valid order ! ", null));
+
+     mockMvc.perform(post("/checkout")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(JsonUtil.toJson(watchesOrder))
+                    .content(JsonUtil.toJson(watchesOrder1))
     ).andExpect(status().isCreated());
   }
 }

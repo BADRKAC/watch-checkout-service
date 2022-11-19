@@ -15,7 +15,7 @@ public class OrderService {
   private final Parameters parameters;
 
   public Double makeOrder(List<String> watchesList) throws CreateOrderHandler {
-    Utils utils = new Utils(parameters);
+    Utils utils = new Utils();
     double total = 0;
 
     if (watchesList.isEmpty()) {
@@ -39,10 +39,10 @@ public class OrderService {
       int occurrences = Collections.frequency(watchesList, parameters.getMichaelkorsID());
       if (occurrences < parameters.getMichaelkorsDiscountQuantity() && occurrences > 0) {
         total += parameters.getMichaelkorsPrice() * occurrences;
-      } else if (occurrences > parameters.getRolexDiscountPrice()) {
+      } else if (occurrences > parameters.getRolexDiscountQuantity()) {
         int eligibleDiscount = (occurrences / parameters.getMichaelkorsDiscountQuantity());
         int normalPrice = (occurrences % parameters.getMichaelkorsDiscountPrice());
-        total += eligibleDiscount * parameters.getMichaelkorsPrice() + normalPrice * parameters.getRolexPrice();
+        total += eligibleDiscount * parameters.getMichaelkorsDiscountPrice() + normalPrice * parameters.getMichaelkorsPrice();
       }
     }
       int occurrencesCasio = Collections.frequency(watchesList, parameters.getCasioID());

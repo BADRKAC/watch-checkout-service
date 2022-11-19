@@ -33,7 +33,7 @@ public class OrderServiceTest {
   @Before
   public void setUp() {
     orderService = new OrderService(parameters);
-     watches1 = Arrays.asList("001", "002", "001", "004", "003");
+     watches1 = Arrays.asList("001", "001", "001", "001", "001","001","001");
      watches2 = new ArrayList<>();
      watches3 = Arrays.asList("UUU", "WWW", "001", "", "003");
      watches4 = Arrays.asList("001", "002", "001", "004", "008");
@@ -56,7 +56,7 @@ public class OrderServiceTest {
     when(parameters.getCasioID()).thenReturn("004");
 
     Double total = orderService.makeOrder(watches1);
-    assertThat(total).isNotNull().isEqualTo(Double.valueOf(360));
+    assertThat(total).isNotNull().isEqualTo(Double.valueOf(500));
 
   }
   @Test

@@ -41,7 +41,7 @@ public class OrderService {
         total += parameters.getMichaelkorsPrice() * occurrences;
       } else if (occurrences > parameters.getRolexDiscountQuantity()) {
         int eligibleDiscount = (occurrences / parameters.getMichaelkorsDiscountQuantity());
-        int normalPrice = (occurrences % parameters.getMichaelkorsDiscountPrice());
+        int normalPrice = (occurrences % parameters.getMichaelkorsDiscountQuantity());
         total += eligibleDiscount * parameters.getMichaelkorsDiscountPrice() + normalPrice * parameters.getMichaelkorsPrice();
       }
     }

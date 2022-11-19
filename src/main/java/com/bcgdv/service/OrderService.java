@@ -15,7 +15,7 @@ public class OrderService {
   private final Parameters parameters;
 
   public Double makeOrder(List<String> watchesList) throws CreateOrderHandler {
-    Utils utils = new Utils();
+    Utils utils = new Utils(parameters);
     double total = 0;
 
     if (watchesList.isEmpty()) {

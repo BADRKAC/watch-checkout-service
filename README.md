@@ -7,7 +7,7 @@
 * JaCoCo for test coverage report.
 * Lombok to reduce boilerplate codes
 
-* # Architecture  :
+# Architecture  :
 * Spring Boot Flow Architecture
 * Will add model layer in future business requirements (consult orders, delete orders...)
 

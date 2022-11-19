@@ -9,12 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bcgdv</groupId>
-    <artifactId>watch-api-simple</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>watch-api-simple</name>
+    <artifactId>backend-bcgdv</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>backend-checkout-watch-v2</name>
     <description>Simplified e-commerce API that performs a checkout action</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
     <dependencies>
         <dependency>

@@ -29,7 +29,7 @@ public class OrderService {
       int occurrences = Collections.frequency(watchesList, parameters.getRolexID());
       if (occurrences < parameters.getRolexDiscountQuantity() && occurrences > 0) {
         total += parameters.getRolexPrice() * occurrences;
-      } else if (occurrences > parameters.getRolexDiscountQuantity()) {
+      } else if (occurrences >= parameters.getRolexDiscountQuantity()) {
         int eligibleDiscount = (occurrences / parameters.getRolexDiscountQuantity());
         int normalPrice = (occurrences % parameters.getRolexDiscountQuantity());
         total += eligibleDiscount * parameters.getRolexDiscountPrice() + normalPrice * parameters.getRolexPrice();
@@ -39,7 +39,7 @@ public class OrderService {
       int occurrences = Collections.frequency(watchesList, parameters.getMichaelkorsID());
       if (occurrences < parameters.getMichaelkorsDiscountQuantity() && occurrences > 0) {
         total += parameters.getMichaelkorsPrice() * occurrences;
-      } else if (occurrences > parameters.getRolexDiscountQuantity()) {
+      } else if (occurrences >= parameters.getMichaelkorsDiscountQuantity()) {
         int eligibleDiscount = (occurrences / parameters.getMichaelkorsDiscountQuantity());
         int normalPrice = (occurrences % parameters.getMichaelkorsDiscountQuantity());
         total += eligibleDiscount * parameters.getMichaelkorsDiscountPrice() + normalPrice * parameters.getMichaelkorsPrice();
